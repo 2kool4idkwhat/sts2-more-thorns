@@ -1,0 +1,6 @@
+{
+    "MORETHORNS-ABRASIVE_ARMOR.description": "Gain {PlatingPower:diff()} [gold]Plating[/gold].\nGain {ThornsPower:diff()} [gold]Thorns[/gold].",
+    "MORETHORNS-ABRASIVE_ARMOR.title": "Abrasive Armor",
+    "MORETHORNS-SPIKES.description": "Gain {ThornsPower:diff()} [gold]Thorns[/gold].\nDraw 1 card.",
+    "MORETHORNS-SPIKES.title": "Spikes"
+}
