@@ -15,23 +15,23 @@ public class Spikes()
     : CustomCardModel(0, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-    	new PowerVar<ThornsPower>(2),
-		new CardsVar(1),
+        new PowerVar<ThornsPower>(2),
+        new CardsVar(1),
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [
-    	HoverTipFactory.FromPower<ThornsPower>(),
+        HoverTipFactory.FromPower<ThornsPower>(),
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-		await PowerCmd.Apply<ThornsPower>(Owner.Creature, DynamicVars["ThornsPower"].IntValue, Owner.Creature, this);
-		await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
+        await CommonActions.Apply<ThornsPower>(choiceContext, Owner.Creature, this);
+        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner);
     }
 
     protected override void OnUpgrade()
     {
-		DynamicVars["ThornsPower"].UpgradeValueBy(1);
+        DynamicVars["ThornsPower"].UpgradeValueBy(1);
     }
 
     public override string? CustomPortraitPath => "res://MoreThorns/images/spikes.png";

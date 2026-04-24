@@ -16,24 +16,24 @@ public class AbrasiveArmor()
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<PlatingPower>(6),
-    	new PowerVar<ThornsPower>(6),
+        new PowerVar<ThornsPower>(6),
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [
-		HoverTipFactory.FromPower<PlatingPower>(),
-    	HoverTipFactory.FromPower<ThornsPower>(),
+        HoverTipFactory.FromPower<PlatingPower>(),
+        HoverTipFactory.FromPower<ThornsPower>(),
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-		await PowerCmd.Apply<PlatingPower>(Owner.Creature, DynamicVars["PlatingPower"].IntValue, Owner.Creature, this);
-		await PowerCmd.Apply<ThornsPower>(Owner.Creature, DynamicVars["ThornsPower"].IntValue, Owner.Creature, this);
+        await CommonActions.Apply<PlatingPower>(choiceContext, Owner.Creature, this);
+        await CommonActions.Apply<ThornsPower>(choiceContext, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-		DynamicVars["PlatingPower"].UpgradeValueBy(2);
-		DynamicVars["ThornsPower"].UpgradeValueBy(2);
+        DynamicVars["PlatingPower"].UpgradeValueBy(2);
+        DynamicVars["ThornsPower"].UpgradeValueBy(2);
     }
 
     public override string? CustomPortraitPath => "res://MoreThorns/images/abrasive-armor.png";
